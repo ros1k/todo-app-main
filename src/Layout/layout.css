@@ -1,0 +1,24 @@
+.theme__button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.layout__container{
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+.layout__bg{
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+
+}
+
+.to-do__header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -220px;
+    margin-bottom: 30px;
+}

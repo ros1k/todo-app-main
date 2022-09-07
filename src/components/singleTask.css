@@ -1,0 +1,101 @@
+.single-task{
+    background-color: #25273C;
+    border-bottom:1px solid dimgray;
+    list-style-type: none;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.task__wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border:none;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.task__wrapper .task{
+    font-size:17px;
+    color:#EBE1F6;
+}
+.task__wrapper .fake__checkbox{
+    display: flex;
+    margin: 0 25px 0 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background: rgb(0,141,215);
+    background: linear-gradient(120deg, rgba(0,141,215,1) 0%, rgba(197,10,252,1) 100%);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+.task__wrapper .fake__checkbox img{
+    opacity:0;
+    transition: all 0.2s ease;
+}
+.task__wrapper .fake__checkbox::after{
+    position: absolute;
+    content:"";
+    width: 26px;
+    height: 26px;
+    top: 1px;
+    left: 1px;
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.2s ease;
+    background:#25273C;
+}
+.task__wrapper .fake__checkbox::before{
+    position: absolute;
+    content:"";
+    height: 28px;
+    width: 28px;
+    top:0;
+    left:0;
+    opacity:1;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+    background-color: dimgray;
+    z-index: 1;
+}
+.task__wrapper .fake__checkbox::after{
+   opacity: 1;
+}
+.delete__task{
+    display: flex;
+    background-color: transparent;
+    border:none;
+    overflow: hidden;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.delete__task img{
+    position: absolute;
+    top:10px;
+    right:-100%;
+    transition: all 0.2s ease;
+}
+.single-task:hover .fake__checkbox::before{
+    opacity:0;
+}
+
+.single-task:hover .delete__task img{
+    right:10px;
+}
+.single-task.completed .fake__checkbox img{
+    opacity: 1;
+    z-index: 10;
+}
+.single-task.completed .fake__checkbox::before,
+.single-task.completed .fake__checkbox::after{
+    opacity:0;
+}

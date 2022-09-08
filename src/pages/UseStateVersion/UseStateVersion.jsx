@@ -1,20 +1,13 @@
 import { useState } from 'react'
- import SingleTask from '../../components/SingleTask'
+import SingleTask from '../../components/SingleTask'
 import './useStateVersion.css'
 import check from '../../images/icon-check.svg'
 import cross from '../../images/icon-cross.svg'
 import { useRef } from 'react'
 import { useEffect } from 'react'
+import exampleTaskList from '../../exampleTask.js'
 
 
-const exampleTaskList = [
-  { task: "Get a ReactJS job", isCompleted: true },
-  { task: "Jog around the park 3x", isCompleted: false },
-  { task: "10 minutes meditation", isCompleted: false },
-  { task: "Read for 1 hour", isCompleted: false },
-  { task: "Pick up groceries", isCompleted: false },
-  { task: "Complete Todo App", isCompleted: false },
-]
 
 
 const UseStateVersion = () => {
@@ -28,6 +21,7 @@ const UseStateVersion = () => {
   const AddNewTask = () => {
     const newTask = { task: taskInput.current.value,isCompleted: false }
     setTaskList([newTask,...TaskList ])
+    taskInput.current.value = "";
   }
 
   const DeleteTask = (taskToDelete) => {
@@ -87,7 +81,7 @@ const UseStateVersion = () => {
     })
     setCurrentTasksList(CurrentTasksList)
   }
-  const countActiveTasks = TaskList.filter(task => task.isCompleted == false ).length;
+  
   useEffect(()=>{
     generateList()
     
@@ -97,7 +91,7 @@ const UseStateVersion = () => {
   return (
     <div>
       <div className='input__wrapper'>
-        <button className="fake__checkbox">
+        <button className="fake__checkbox" onClick={AddNewTask}>
           <img src={check} alt="" />
         </button>
         
@@ -113,7 +107,7 @@ const UseStateVersion = () => {
         <ul className="tasks__list">
           {showCurrentTasksList}
           <li className="task__list--options">
-            <span className="counter">{countActiveTasks + ' items left'}</span>
+            <span className="counter">{TaskList.filter(task => task.isCompleted == false ).length + ' items left'}</span>
             <div className="filters">
               <button 
                 className="filter-button active" 

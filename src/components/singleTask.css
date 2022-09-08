@@ -118,3 +118,8 @@
 .layout--wrapper.light .task__wrapper .fake__checkbox::after{
     background-color:#ffffff;
 }
+@media only screen and (max-width: 600px) {
+   .task__wrapper .task{
+    font-size:15px;
+   }
+}

@@ -33,7 +33,9 @@ const UseStateVersion = () => {
   const DeleteTask = (taskToDelete) => {
     setTaskList(TaskList.filter(item => item.task !== taskToDelete));
   }
-
+  const ClearCompleted = () =>{
+    setTaskList(TaskList.filter(task => !task.isCompleted))
+  }
   const handleToggleTask = (updateTask) =>{
     const updateList = TaskList.map((element,i)=>{
       if(updateTask === element.task){
@@ -132,7 +134,7 @@ const UseStateVersion = () => {
                 ref={(el) => (filtersRef.current[2] = el)}
                 >Completed</button>
             </div>
-            <button className="clear">Clear Completed</button>
+            <button className="clear" onClick={ClearCompleted}>Clear Completed</button>
           </li>
         </ul>
       </div>

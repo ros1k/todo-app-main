@@ -5,7 +5,7 @@ import check from '../images/icon-check.svg'
 
 
 
-const SingleTask = ({task,isCompleted,handleClickTask}) => {
+const SingleTask = ({task,isCompleted,handleClickTask,deleteTask}) => {
     
 
     return (
@@ -16,7 +16,7 @@ const SingleTask = ({task,isCompleted,handleClickTask}) => {
                 </span> 
                 <p className="task">{task}</p>
             </button>
-            <button className="delete__task"><img src={cross} alt="" /></button>
+            <button onClick={(e) => {deleteTask(task)}} className="delete__task"><img src={cross} alt="" /></button>
         </li>
     )
 }

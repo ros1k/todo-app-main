@@ -17,7 +17,7 @@ const Layout = ({children,changeTheme,currentTheme}) => {
   },[])
  
   return (
-    <div className="layout--wrapper" >
+    <div className={'layout--wrapper ' + currentTheme}>
         <div className="layout__bg" style={{backgroundImage:`Url(${currentTheme ==='dark'? DarkBg : LightBg})`}}></div>
         <div className="layout__container">
           <header className='to-do__header'>

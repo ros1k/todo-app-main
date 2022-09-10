@@ -152,6 +152,7 @@
 .counter{
     font-size:12px;
     font-weight: 600;
+    color:darkgrey;
 }
 
 @media only screen and (max-width: 600px) {

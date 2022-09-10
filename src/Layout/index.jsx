@@ -1,9 +1,7 @@
 
-import { useEffect } from 'react'
-
 import { Link } from 'react-router-dom'
-
 import './layout.css'
+
 import Moon from '../images/icon-moon.svg'
 import Sun from '../images/icon-sun.svg'
 import DarkBg from '../images/bg-desktop-dark.jpg'
@@ -11,10 +9,6 @@ import LightBg from '../images/bg-desktop-light.jpg'
 
 const Layout = ({children,changeTheme,currentTheme}) => {
  
-
-  useEffect(() => {
-    
-  },[])
  
   return (
     <div className={'layout--wrapper ' + currentTheme}>
@@ -31,7 +25,7 @@ const Layout = ({children,changeTheme,currentTheme}) => {
           </header>
           {/* <ul>
               <li>
-              <Link to="useStateVersion">useState Version</Link>
+              <Link to="/">useState Version</Link>
               </li>
               <li>
               <Link to="reactContexVersion">React Context Version</Link>

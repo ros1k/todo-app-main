@@ -55,6 +55,7 @@
     z-index: 2;
     transition: all 0.2s ease;
     background:#25273C;
+    opacity: 1;
 }
 .task__wrapper .fake__checkbox::before{
     position: absolute;
@@ -68,9 +69,6 @@
     border-radius: 50%;
     background-color: dimgray;
     z-index: 1;
-}
-.task__wrapper .fake__checkbox::after{
-   opacity: 1;
 }
 .delete__task{
     display: flex;

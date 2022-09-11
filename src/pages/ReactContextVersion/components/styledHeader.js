@@ -4,9 +4,25 @@ import styled from 'styled-components'
 export const TopWrapper = styled.header`
   
 `
-export const HeaderContent = styled.div``
-export const Title = styled.h1``
-export const ThemeButton = styled.button``
+export const HeaderContent = styled.div`
+  display: flex;
+  padding:20px 15px;
+  justify-content: space-between;
+`
+export const Title = styled.h1`
+  color:white;
+  letter-spacing: 5px;
+`
+export const ThemeButton = styled.button`
+  cursor:pointer;
+  background-color: transparent;
+  border:none;
+  &:focus-visible{
+    border:none;
+    outline: none;
+
+  }
+`
 export const ThemeIcon = styled.img``
 export const CheckboxButton = styled.button`
     display: flex;
@@ -35,7 +51,7 @@ export const CheckboxButton = styled.button`
       border-radius: 50%;
       z-index: 2;
       transition: all 0.2s ease;
-      background:#25273C;
+      background: ${props => props.theme === 'dark' ? '#25273C' : '#FFFFFF'}
     }
     &:before{
       position: absolute;
@@ -58,7 +74,8 @@ export const InputWrapper = styled.div`
     padding:15px 10px;
     position: relative;
     border-radius: 5px;
-    background-color: #25273C;
+    transition: all 0.2s ease ;
+    background-color: ${props => props.theme === 'dark' ? '#25273C' : '#FFFFFF'};
     display: flex;
     &:hover ${CheckboxButton}{
       &:before{
@@ -75,9 +92,9 @@ export const ButtonImage = styled.img`
     }
 `
 export const Input = styled.input.attrs({
-    onChange: null,
-    type: 'text',
-    placeholder: 'Create a new todo ...'
+  onChange: null,
+  type: 'text',
+  placeholder: 'Create a new todo ...'
 })`
   
     background-color: transparent;

@@ -1,39 +1,58 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import LightBG from '../../../images/bg-desktop-light.jpg'
-import DarkBG from '../../../images/bg-desktop-dark.jpg'
 
+import exampleTaskList from '../../../exampleTask'
 export const AppContext = createContext();
-const themeDark = {
-    backgroundColor: '#25273C',
-    color: "#EBE1F6",
-    image: DarkBG
-}
-const themeLight = {
-    backgroundColor: '#FFFFFF',
-    color: "black",
-    image: LightBG
-}
 
+const FilterTypes = ['all', 'active', 'completed']
 
 const AppProvider = ({ children }) => {
 
     const [theme, setTheme] = useState("dark")
-    const [themeScheme, setThemeScheme] = useState(theme === "dark" ? themeDark : themeLight)
 
+    const [tasks, setTasks] = useState(exampleTaskList)
+    const [activeFilter, setActiveFilter] = useState('all')
 
-
-    const changeTheme = () => {
-        theme === "dark" ? setTheme('light') : setTheme('dark')
+    const AddNewTask = (taskValue) => {
+        const newTask = { task: taskValue, isCompleted: false }
+        setTasks([newTask, ...tasks])
     }
+    const DeleteTask = (taskToDelete) => {
+        setTasks(tasks.filter(item => item.task !== taskToDelete));
+    }
+    const ToggleCompleted = (task) => {
+        const updateList = tasks.map((element, i) => {
+            if (task === element.task) {
+                element.isCompleted = !element.isCompleted;
+            }
+            return element
+        })
+        setTasks(updateList)
+    }
+    const ClearCompleted = () => {
+        setTasks(tasks.filter(task => !task.isCompleted))
+    }
+    const ToggleFilter = (currentFilter) => {
+        setActiveFilter(currentFilter)
+    }
+    const changeTheme = () => {
 
-    useEffect(() => {
-
-    })
+        theme === "dark"
+            ? setTheme('light')
+            : setTheme('dark')
+    }
     return (
         <AppContext.Provider value={{
             theme,
-            themeScheme,
-            changeTheme
+            changeTheme,
+            tasks,
+            AddNewTask,
+            DeleteTask,
+            ClearCompleted,
+            ToggleCompleted,
+            FilterTypes,
+            ToggleFilter,
+            activeFilter
+
         }}>
             {children}
         </AppContext.Provider>

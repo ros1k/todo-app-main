@@ -1,19 +1,19 @@
 import { useContext } from "react"
 import styled from "styled-components"
 import { AppContext } from "../context/context"
-
+import LightBG from '../../../images/bg-desktop-light.jpg'
+import DarkBG from '../../../images/bg-desktop-dark.jpg'
 
  const AppWrapper = ({children}) => {
-  const {themeScheme} = useContext(AppContext)
+  const {theme} = useContext(AppContext)
    return (
         <Wrapper>
             <BgWrapper>
-              <Background src={themeScheme.image}/>
+              <Background src={theme ==='dark' ? DarkBG : LightBG}/>
             </BgWrapper>
             <Container>
               {children}
             </Container>
-          
         </Wrapper>
    )
  }
@@ -28,7 +28,8 @@ import { AppContext } from "../context/context"
   position: absolute;
   top:0;
   left:0;
-  width: 100%;
+  width: 100vw;
+  overflow-x: hidden;
   height: 400px;
   z-index: -1;
  `
